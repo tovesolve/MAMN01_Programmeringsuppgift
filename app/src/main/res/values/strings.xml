@@ -3,4 +3,7 @@
     <string name="accelerometers_button">Accelerometers</string>
     <string name="compass_button">Compass</string>
     <string name="accelerometer_title">Accelerometer values:</string>
+    <string name="acc_X">X:</string>
+    <string name="acc_Y">Y:</string>
+    <string name="acc_Z">Z:</string>
 </resources>
