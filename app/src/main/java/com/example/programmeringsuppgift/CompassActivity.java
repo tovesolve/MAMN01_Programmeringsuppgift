@@ -7,9 +7,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
-import android.os.Build;
-import android.os.VibrationEffect;
-import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,13 +31,17 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private Vibrator v;
     private String lastDirection;
     MediaPlayer mySound;
+    MediaPlayer backgroundsSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compass);
-        
-        //mySound = MediaPlayer.create(CompassActivity.this, );
+
+        mySound = MediaPlayer.create(CompassActivity.this, R.raw.sound);
+        backgroundsSound = MediaPlayer.create(CompassActivity.this, R.raw.bensoundepic);
+        backgroundsSound.start(); //start exiting music in the background.
+
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -79,11 +80,13 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             where = "N";
             if (!lastDirection.equalsIgnoreCase(where)) {
                     v.vibrate(500);
+                    mySound.start();
             }
         }
 
-        if (mAzimuth < 350 && mAzimuth > 280)
+        if (mAzimuth < 350 && mAzimuth > 280) {
             where = "NW";
+        }
         if (mAzimuth <= 280 && mAzimuth > 260)
             where = "W";
         if (mAzimuth <= 260 && mAzimuth > 190)
@@ -145,6 +148,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
             if(haveSensor)
                 mSensorManager.unregisterListener(this,mRotationV);
         }
+        backgroundsSound.stop(); //stops the background music when returning from activity
     }
 
     @Override
