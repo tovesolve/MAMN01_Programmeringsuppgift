@@ -4,57 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccelerometerActivity">
+    tools:context=".AccelerometerActivity"
+    >
+
+    <ImageView
+        android:id="@+id/boat"
+        android:layout_width="173dp"
+        android:layout_height="346dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/boat"
+        android:src="@drawable/boatfromabove2"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.198" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="256dp"
+        android:layout_width="310dp"
         android:layout_height="86dp"
-        android:layout_marginTop="48dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
         android:text="@string/accelerometer_title"
-        android:textColor="#3F51B5"
-        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#5967B3"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="382dp"
-        android:layout_height="372dp"
-        android:gravity="bottom"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/textViewX"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="sans-serif"
+        android:gravity="start"
+        android:text="@string/acc_X"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/boat"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textViewY"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="start"
+        android:text="@string/acc_Y"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/boat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewX" />
+
+    <TextView
+        android:id="@+id/textViewZ"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="start"
+        android:text="@string/acc_Z"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/boat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewY" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="400dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:hapticFeedbackEnabled="false"
+        android:text="@string/textviewResult"
+        android:textColor="#3F51B5"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textViewX"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="208dp"
-            android:gravity="center"
-            android:text="@string/acc_X" />
-
-        <TextView
-            android:id="@+id/textViewY"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="@string/acc_Y" />
-
-        <TextView
-            android:id="@+id/textViewZ"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="208dp"
-            android:gravity="center"
-            android:text="@string/acc_Z" />
-    </LinearLayout>
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

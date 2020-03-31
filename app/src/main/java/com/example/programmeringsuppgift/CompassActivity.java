@@ -1,5 +1,6 @@
 package com.example.programmeringsuppgift;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.hardware.Sensor;
@@ -28,7 +29,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private float[] mLastMagnetometer = new float[3];
     private boolean mLastAccelerometerSet = false;
     private boolean mLastMagnetometerSet = false;
-    private Vibrator v;
+    private Vibrator vibrator;
     private String lastDirection;
     MediaPlayer mySound;
     MediaPlayer backgroundsSound;
@@ -42,7 +43,8 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         backgroundsSound = MediaPlayer.create(CompassActivity.this, R.raw.bensoundepic);
         backgroundsSound.start(); //start exiting music in the background.
 
-        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        //vibrator = (Vibrator) getSystemService(Activity.VIBRATOR_SERVICE);
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         compass_img = (ImageView) findViewById(R.id.img_compass);
@@ -79,7 +81,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         if (mAzimuth >= 350 || mAzimuth <= 10) {
             where = "N";
             if (!lastDirection.equalsIgnoreCase(where)) {
-                    v.vibrate(500);
+                vibrator.vibrate(500);
                     mySound.start();
             }
         }
@@ -149,6 +151,9 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                 mSensorManager.unregisterListener(this,mRotationV);
         }
         backgroundsSound.stop(); //stops the background music when returning from activity
+        mySound.stop();
+        vibrator.cancel();
+
     }
 
     @Override

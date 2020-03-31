@@ -6,4 +6,6 @@
     <string name="acc_X">X:</string>
     <string name="acc_Y">Y:</string>
     <string name="acc_Z">Z:</string>
+    <string name="textviewResult">OK!</string>
+    <string name="boat">boat</string>
 </resources>
