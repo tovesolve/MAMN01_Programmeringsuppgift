@@ -45,14 +45,18 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
         textViewZ = findViewById(R.id.textViewZ);
         textViewResult = findViewById(R.id.textView2);
         boatbutton = (Button) findViewById(R.id.boatbutton);
-
         boatbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AccelerometerActivity.this, Pop.class));
+                openDialog();
             }
         });
 
+    }
+
+    public void openDialog() {
+        Dialog dialog = new Dialog();
+        dialog.show(getSupportFragmentManager(), "dialog");
     }
 
     @Override
@@ -64,7 +68,6 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
         textViewX.setText("X: " + df.format(x));
         textViewY.setText("Y: " + df.format(y));
         textViewZ.setText("Z: " + df.format(z));
-
         String position = "Ship is stable";
         textViewResult.setTextColor(Color.parseColor("#083F83"));
 
@@ -80,6 +83,10 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
             position = "Man over board!";
             vibrator.vibrate(200);
             textViewResult.setTextColor(Color.rgb(200,0,0));
+        }
+        if (-2 > x && x > -3 && y>1 && y<2) {
+            position = "Ship is stable and fast";
+            textViewResult.setTextColor(Color.rgb(0,200,0));
         }
         textViewResult.setText(position);
 
