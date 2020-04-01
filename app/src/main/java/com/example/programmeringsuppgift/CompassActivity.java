@@ -152,7 +152,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         }
         backgroundsSound.stop(); //stops the background music when returning from activity
         mySound.stop();
-        vibrator.cancel();
 
     }
 

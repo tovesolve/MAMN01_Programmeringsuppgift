@@ -9,4 +9,5 @@
     <string name="textviewResult">OK!</string>
     <string name="boat">boat</string>
     <string name="map">map</string>
+    <string name="boatbutton"></string>
 </resources>
