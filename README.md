@@ -11,5 +11,6 @@ Links used:
 
 - Accelerometer: https://www.youtube.com/watch?v=YrI2pCZC8cc
 - Compass: I used the Compass turtorial linked from moodle.
+- Adding a AlertDialog: https://www.youtube.com/watch?v=Bsm-BlXo2SI
 
 - For problems and small things like Reduce to two decimals, I have used stackoverflow.
