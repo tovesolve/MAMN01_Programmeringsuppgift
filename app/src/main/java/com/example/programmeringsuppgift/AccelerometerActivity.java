@@ -28,6 +28,7 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
     private static DecimalFormat df = new DecimalFormat("0.00");
     private Vibrator vibrator;
     private Button boatbutton;
+    private boolean activate = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +80,11 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
             position = "Ship is leaning left";
         if(x < -3)
             position = "Ship is leaning right";
-        if (y > 8 || y < -8 || x > 8 || x < -8) {
+        if (y > 9 || y < -9 || x > 9 || x < -9) {
             position = "Man over board!";
-            vibrator.vibrate(200);
+            if (activate) {
+                vibrator.vibrate(200);
+            }
             textViewResult.setTextColor(Color.rgb(200,0,0));
         }
         if (-2 > x && x > -3 && y>1 && y<2) {
@@ -95,6 +98,18 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        activate = false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activate = true;
     }
 
 }

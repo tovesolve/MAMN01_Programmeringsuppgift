@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Find your treasures:"
+        android:text="Tools to find the treasure:"
         android:textColor="#937443"
         android:textSize="30sp"
         android:textStyle="bold"
