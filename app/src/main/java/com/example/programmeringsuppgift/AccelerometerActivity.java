@@ -28,7 +28,7 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
     private static DecimalFormat df = new DecimalFormat("0.00");
     private Vibrator vibrator;
     private Button boatbutton;
-    private boolean activate = true;
+    boolean haveSensor = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        haveSensor = sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 
         vibrator = (Vibrator) getSystemService(Activity.VIBRATOR_SERVICE);
 
@@ -82,9 +82,7 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
             position = "Ship is leaning right";
         if (y > 9 || y < -9 || x > 9 || x < -9) {
             position = "Man over board!";
-            if (activate) {
-                vibrator.vibrate(200);
-            }
+            vibrator.vibrate(200);
             textViewResult.setTextColor(Color.rgb(200,0,0));
         }
         if (-2 > x && x > -3 && y>1 && y<2) {
@@ -100,16 +98,23 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
 
     }
 
+    public void stop() {
+        if(haveSensor){
+            sensorManager.unregisterListener(this,sensor);
+        }
+        vibrator.cancel();
+
+    }
+
     @Override
     public void onPause(){
         super.onPause();
-        activate = false;
+        stop();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        activate = true;
     }
 
 }

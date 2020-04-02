@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 public class Dialog extends AppCompatDialogFragment {
+
     @Override
     public android.app.Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

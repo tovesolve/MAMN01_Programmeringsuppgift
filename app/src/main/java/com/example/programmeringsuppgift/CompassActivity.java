@@ -42,9 +42,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         mySound = MediaPlayer.create(CompassActivity.this, R.raw.sound);
         backgroundsSound = MediaPlayer.create(CompassActivity.this, R.raw.bensoundepic);
         backgroundsSound.start(); //start exiting music in the background.
-
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        //vibrator = (Vibrator) getSystemService(Activity.VIBRATOR_SERVICE);
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         compass_img = (ImageView) findViewById(R.id.img_compass);
@@ -152,6 +150,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         }
         backgroundsSound.stop(); //stops the background music when returning from activity
         mySound.stop();
+        vibrator.cancel();
 
     }
 
@@ -164,6 +163,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     @Override
     protected void onResume() {
         super.onResume();
-        start();
+        //start();
     }
 }
