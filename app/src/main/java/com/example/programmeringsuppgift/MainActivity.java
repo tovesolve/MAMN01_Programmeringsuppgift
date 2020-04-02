@@ -17,13 +17,11 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the user taps the Acceleromater button*/
     public void start_accelerometer(View view) {
         Intent intent = new Intent(this, AccelerometerActivity.class);
-
         startActivity(intent);
     }
     /** Called when the user taps the Compass button*/
     public void start_compass(View view) {
         Intent intent = new Intent(this, CompassActivity.class);
-
         startActivity(intent);
     }
 }

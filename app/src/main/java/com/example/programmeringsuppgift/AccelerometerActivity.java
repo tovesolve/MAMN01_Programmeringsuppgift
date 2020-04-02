@@ -90,7 +90,6 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
             textViewResult.setTextColor(Color.rgb(0,200,0));
         }
         textViewResult.setText(position);
-
     }
 
     @Override
@@ -103,7 +102,6 @@ public class AccelerometerActivity extends AppCompatActivity implements SensorEv
             sensorManager.unregisterListener(this,sensor);
         }
         vibrator.cancel();
-
     }
 
     @Override
